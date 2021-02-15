@@ -4,6 +4,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/JoseFMP/lmpm/utils"
 	"github.com/stretchr/testify/require"
 )
 
@@ -11,7 +12,7 @@ func TestAddOneParam(t *testing.T) {
 
 	// arrange
 	mockMap := make(map[string]string)
-	mockTimeStamp := time.Unix(1613380252, 0)
+	mockTimeStamp := time.Unix(1613380252, 0).In(utils.GetThailandTimeZone())
 	mockKey := "lalala"
 
 	// act
@@ -25,6 +26,7 @@ func TestAddOneParam(t *testing.T) {
 
 	timeParsed, errParsing := time.Parse(time.RFC3339, timeSerialized)
 	require.Nil(t, errParsing)
+	timeParsed = timeParsed.In(mockTimeStamp.Location())
 	require.Equal(t, mockTimeStamp, timeParsed)
 }
 
