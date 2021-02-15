@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"time"
 
 	"github.com/JoseFMP/lmpm"
 	"github.com/JoseFMP/lmpm/utils"
@@ -12,11 +11,11 @@ import (
 
 type LMPMReservationClient lmpm.Client
 
-func (client LMPMReservationClient) List(updateAtFrom time.Time, updateAtTo time.Time, startFrom time.Time, startTo time.Time) ([]Reservation, error) {
+func (client LMPMReservationClient) List(updatedAt utils.Period, start utils.Period) ([]Reservation, error) {
 
 	subpath := composePath(client.CompanyID)
 
-	getParams := composeGetParams(updateAtFrom, updateAtTo, startFrom, startTo)
+	getParams := composeGetParams(updatedAt.From, updatedAt.To, start.From, start.To)
 
 	req, errCreatingReq := utils.CreateGetReq(client.BaseUrl, subpath, client.APIKey, getParams)
 	if errCreatingReq != nil {

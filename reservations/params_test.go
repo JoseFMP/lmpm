@@ -27,3 +27,23 @@ func TestAddOneParam(t *testing.T) {
 	require.Nil(t, errParsing)
 	require.Equal(t, mockTimeStamp, timeParsed)
 }
+
+func TestComposeGetParams(t *testing.T) {
+
+	// arrange
+	updateAtFrom, errParsingUpdateAtFrom := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
+	if errParsingUpdateAtFrom != nil {
+		panic("Wrong updateAtFrom")
+	}
+	updatedAtTo, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
+	startFrom, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
+	startTo, _ := time.Parse(time.RFC3339, "2006-01-02T15:04:05Z")
+
+	// act
+	params := composeGetParams(updateAtFrom, updatedAtTo, startFrom, startTo)
+
+	// verify
+	require.NotNil(t, params)
+	require.Len(t, params, 4)
+
+}

@@ -45,7 +45,7 @@ func DoReq(req *http.Request) ([]byte, *LMPMErrorPayload, error) {
 
 func CreateGetReq(environment lmpm.Environment, subpath string, apiKey string, urlParams map[string]string) (*http.Request, error) {
 
-	return createReq(http.MethodGet, environment, subpath, apiKey, nil)
+	return createReq(http.MethodGet, environment, subpath, apiKey, urlParams)
 }
 
 func createReq(method string, environment lmpm.Environment, subpath string, apiKey string, urlParams map[string]string) (*http.Request, error) {

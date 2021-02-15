@@ -6,6 +6,7 @@ import (
 
 	"github.com/JoseFMP/lmpm"
 	"github.com/JoseFMP/lmpm/reservations"
+	"github.com/JoseFMP/lmpm/utils"
 )
 
 func main() {
@@ -22,11 +23,16 @@ func main() {
 
 	now := time.Now()
 
-	updateAtFrom := now.Add(-time.Hour * 24 * 10)
-	updateAtTo := now.Add(-time.Hour * 24 * 1)
-	startFrom := now.Add(-time.Hour * 24 * 100)
-	startTo := now.Add(-time.Hour * 24 * 1)
-	reservations, errGettingRes := reservatitionsClient.List(updateAtFrom, updateAtTo, startFrom, startTo)
+	updatedAt := utils.Period{
+		From: now.Add(-time.Hour * 24 * 10),
+		To:   now.Add(-time.Hour * 24 * 1),
+	}
+
+	start := utils.Period{
+		From: now.Add(-time.Hour * 24 * 100),
+		To:   now.Add(-time.Hour * 24 * 1),
+	}
+	reservations, errGettingRes := reservatitionsClient.List(updatedAt, start)
 	if errGettingRes != nil {
 		panic(errGettingRes)
 	}
