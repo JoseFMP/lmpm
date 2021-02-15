@@ -24,7 +24,7 @@ func main() {
 	now := time.Now()
 
 	updatedAt := utils.Period{
-		From: now.Add(-time.Hour * 24 * 10),
+		From: now.Add(-time.Hour * 24 * 100),
 		To:   now.Add(-time.Hour * 24 * 1),
 	}
 
