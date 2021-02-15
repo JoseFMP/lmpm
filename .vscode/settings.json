@@ -1,0 +1,50 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/__debug_bin": true,
+        "go.sum": true,
+        "main": true,
+    },
+    "files.watcherExclude": {
+        "**/.git/objects/**": true,
+        "**/.git/subtree-cache/**": true,
+        "**/node_modules/**": true,
+        "**/.hg/store/**": true,
+        "go.sum": true,
+        "main": true,
+    },
+    "go.lintTool": "golangci-lint",
+    "go.lintOnSave": "workspace",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.organizeImports": true,
+    },
+    "go.useLanguageServer": true,
+    "go.autocompleteUnimportedPackages": true,
+    "go.enableCodeLens": {
+        "references": true,
+        "runtest": true,
+    },
+    "go.liveErrors": {
+        "enabled": true,
+        "delay": 60,
+    },
+    "go.delveConfig": {
+        "dlvLoadConfig": {
+            "followPointers": true,
+            "maxVariableRecurse": 3,
+            "maxStringLen": 64000,
+            "maxArrayValues": 64,
+            "maxStructFields": -1
+        },
+        "apiVersion": 2,
+        "showGlobalVariables": false
+    },
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
+    "editor.formatOnSaveMode": "file"
+}
